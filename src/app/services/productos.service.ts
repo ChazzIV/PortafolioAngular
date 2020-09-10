@@ -41,23 +41,24 @@ export class ProductosService {
   }
 
 
-  buscarProducto( termino: string): void {
+  buscarProducto( termino: string ): void {
 
-    if ( this.productos.length === 0) {
+
+    if ( this.productos.length === 0 ) {
+      // cargar productos
       this.cargarProductos().then( () => {
+        // ejecutar después de tener los productos
+        // Aplicar filtro
         this.filtrarProductos( termino );
       });
-    } else {
 
+    } else {
+      // aplicar el filtro
+      this.filtrarProductos( termino );
     }
 
-    this.productosFiltrado = this.productos.filter( producto => {
-      return true;
-    });
 
-    console.log(this.productosFiltrado);
   }
-
 
   private filtrarProductos( termino: string): void {
     this.productosFiltrado = [];
